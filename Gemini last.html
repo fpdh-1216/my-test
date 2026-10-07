@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2023년 9월 풀버전 PC 견적소</title>
+<style>
+body { font-family: 'Malgun Gothic', sans-serif; background-color: #f4f7f6; padding: 20px; color: #333; }
+.container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+h1 { text-align: center; color: #2c3e50; margin-bottom: 30px; }
+.form-group { margin-bottom: 25px; }
+label { display: block; font-weight: bold; margin-bottom: 10px; color: #34495e; font-size: 16px; }
+select { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 8px; font-size: 15px; outline: none; }
+.total-price-box { margin-top: 40px; padding: 20px; background-color: #e8f6f3; border-radius: 8px; text-align: right; }
+.total-price-box span.label { font-size: 20px; font-weight: bold; color: #16a085; }
+.total-price-box span#total { font-size: 32px; font-weight: bold; color: #e74c3c; margin-left: 15px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>💻 2023년 9월 기준 통합 PC 견적소</h1>
+
+<div class="form-group">
+<label for="cpu">1. CPU (프로세서)</label>
+<select id="cpu" onchange="calculateTotal()">
+<option value="0">선택 안 함</option>
+<option value="600220">라이젠7 7800X3D (600,220원)</option>
+<option value="922550">라이젠9 7950X3D (922,550원)</option>
+<option value="688900">라이젠9 7900X3D (688,900원)</option>
+<option value="1138350">i9-13900KS D5 (1,138,350원)</option>
+<option value="754820">i9-13900K D5 (754,820원)</option>
+<option value="542190">i7-13700K D5 (542,190원)</option>
+<option value="447090">라이젠7 5800X3D (447,090원)</option>
+<option value="415160">i5-13600K D5 (415,160원)</option>
+<option value="291800">라이젠5 7600X (291,800원)</option>
+<option value="262210">라이젠5 7600 (262,210원)</option>
+<option value="225500">라이젠5 7500F (225,500원)</option>
+<option value="198860">i5-12400F D4 (179,180원)</option>
+<option value="169310">라이젠5 5600X (169,310원)</option>
+<option value="154790">라이젠5 5600 (154,790원)</option>
+<option value="150820">i3-12100 D4 (150,820원)</option>
+<option value="113800">라이젠5 PRO 4650G (113,800원)</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="mb">2. 메인보드 (마더보드)</label>
+<select id="mb" onchange="calculateTotal()">
+<option value="0">선택 안 함</option>
+<option value="411300">ASUS ROG STRIX B650E-E GAMING WIFI (411,300원)</option>
+<option value="397620">ASUS PRIME X670-P (대원) (397,620원)</option>
+<option value="412600">ASUS TUF Gaming X670E-PLUS (대원) (412,600원)</option>
+<option value="673990">ASUS ROG STRIX X670E-I GAMING WIFI (ST) (673,990원)</option>
+<option value="1005480">ASUS ROG CROSSHAIR X670E HERO (ST) (1,005,480원)</option>
+<option value="368590">GIGABYTE X670 AORUS ELITE AX (제이씨현) (368,590원)</option>
+<option value="418990">MSI MAG X670E 토마호크 WIFI (418,990원)</option>
+<option value="338180">ASRock X670E PG Lightning (대원) (338,180원)</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="gpu">3. VGA (그래픽카드)</label>
+<select id="gpu" onchange="calculateTotal()">
+<option value="0">선택 안 함 (내장그래픽 사용 등)</option>
+<option value="2293367">RTX 4090 (2,293,367원)</option>
+<option value="1562010">RTX 4080 (1,562,010원)</option>
+<option value="1588167">RX 7900 XTX (1,588,167원)</option>
+<option value="1090234">RTX 4070 Ti (1,090,234원)</option>
+<option value="792040">RTX 4070 (792,040원)</option>
+<option value="790064">RTX 3070 Ti (790,064원)</option>
+<option value="693374">RTX 4060 Ti 16GB (693,374원)</option>
+<option value="548530">RTX 4060 Ti 8GB (548,530원)</option>
+<option value="418030">RTX 4060 (418,030원)</option>
+<option value="382180">RTX 3060 12GB (382,180원)</option>
+<option value="300970">RTX 3050 (300,970원)</option>
+<option value="225047">GTX 1660 SUPER (225,047원)</option>
+<option value="177820">GTX 1050 Ti (177,820원)</option>
+<option value="102075">GT 1030 DDR4 (102,075원)</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="case">4. Case (케이스)</label>
+<select id="case" onchange="calculateTotal()">
+<option value="0">선택 안 함</option>
+<option value="31500">ABKO NCORE 식스팬 풀 아크릴 LUNAR (31,500원)</option>
+<option value="32500">마이크로닉스 Master M60 메쉬 (32,500원)</option>
+<option value="29480">아이구주 HATCH 6 플렉스 메쉬 강화유리 (29,480원)</option>
+<option value="37000">DAVEN FT903 MESH 강화유리 (37,000원)</option>
+<option value="40000">darkFlash DLM22 RGB 강화유리 (40,000원)</option>
+<option value="75900">대양케이스 ME NO.8 RGB 강화유리 (75,900원)</option>
+<option value="83230">SUITMASTER 361G 칼리스토 DOUBLING (83,230원)</option>
+<option value="115500">BRAVOTEC GUARDIAN 1200M 타이탄 (115,500원)</option>
+<option value="106000">3RSYS T800 풍통 (106,000원)</option>
+<option value="262000">Fractal Design Define 7 Clear 강화유리 (262,000원)</option>
+<option value="147000">be quiet PURE BASE 500DX (147,000원)</option>
+<option value="225600">리안리 PC-O11 Dynamic RAZER (225,600원)</option>
+<option value="215180">NZXT H510 Elite (215,180원)</option>
+</select>
+</div>
+
+<!-- 총 합계 출력 -->
+<div class="total-price-box">
+<span class="label">총 예상 금액:</span>
+<span id="total">0</span> <span style="font-size:24px; font-weight:bold; color: #e74c3c;">원</span>
+</div>
+</div>
+
+<script>
+function calculateTotal() {
+const cpuPrice = parseInt(document.getElementById('cpu').value) || 0;
+const mbPrice = parseInt(document.getElementById('mb').value) || 0;
+const gpuPrice = parseInt(document.getElementById('gpu').value) || 0;
+const casePrice = parseInt(document.getElementById('case').value) || 0;
+
+const totalPrice = cpuPrice + mbPrice + gpuPrice + casePrice;
+document.getElementById('total').innerText = totalPrice.toLocaleString();
+}
+</script>
+
+</body>
+</html>
